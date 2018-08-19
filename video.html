@@ -1,0 +1,46 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+		function getfile(){
+			var fname=document.getElementById("fname").value;
+			if(fname.includes('.mp4')){
+				document.getElementById("videoPlayer").innerHTML="<source id='videosrc' src='"+fname+ "'type='video/mp4'>";
+				document.getElementById("videoPlayer").pause();
+				document.getElementById("videoPlayer").load();
+				document.getElementById("videoPlayer").play();
+				document.title=fname;
+			}else if(fname.includes('.ogg')){
+				document.getElementById("videoPlayer").innerHTML="<source id='videosrc' src='"+fname+ "'type='video/ogg'>";
+				document.getElementById("videoPlayer").pause();
+				document.getElementById("videoPlayer").load();
+				document.getElementById("videoPlayer").play();
+				document.title=fname;
+			}else if(fname.includes('.webm')){
+				document.getElementById("videoPlayer").innerHTML="<source id='videosrc' src='"+fname+ "'type='video/webm'>";
+				document.getElementById("videoPlayer").pause();
+				document.getElementById("videoPlayer").load();
+				document.getElementById("videoPlayer").play();
+				document.title=fname;
+			}else{
+				alert("We only support mp4, ogg, and webm format");
+			}
+		}
+	</script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<center>
+		<div class="form-style-6">
+			<video id="videoPlayer" controls>
+				<source id='videosrc' src="" type="video/mp4">
+			</video>
+			<p></p>
+			<input type="text" id="fname" placeholder="Example.mp4"></input>
+			<p></p>
+			<input type="submit" id="btn" value="Get File" onclick="getfile()"></input>
+		</div>
+	</center>
+</body>
+</html>
