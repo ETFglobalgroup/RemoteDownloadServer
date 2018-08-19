@@ -1,0 +1,29 @@
+<html>
+<head>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script>
+		$(function() {
+			var socket = io.connect();
+			socket.on('status', function (data) {
+				if(data.status!=='standby' && data.status!=='Finish'){
+					$('#status').text(data.status+' '+data.progress+'% ('+data.speed+')');
+					document.title =data.status+' '+data.progress+'% ('+data.speed+')';
+				}else{
+					$('#status').text(data.status);
+					document.title =data.status;
+				}
+			});
+		})
+	</script>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<center>
+<div class="form-style-6">
+	<div id='fortyfive'></div>
+	<h1 id="status">standby</h1>
+</div>
+</center>
+</body>
+</html>
